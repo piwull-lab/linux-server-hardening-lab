@@ -1,1 +1,28 @@
+---
+- name: Deploy Custom Website
+  hosts: dmz
+  become: true
 
+  tasks:
+    - name: Create custom website page
+      ansible.builtin.copy:
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+        mode: '0644'
+        content: |
+          <!DOCTYPE html>
+          <html lang="id">
+          <head>
+              <meta charset="UTF-8">
+              <title>My Homelab Server</title>
+          </head>
+          <body>
+              <h1>Welcome to My Homelab!</h1>
+              <h2>Linux Server Hardening Lab</h2>
+              <p>Website ini berjalan menggunakan Nginx.</p>
+              <p>Server: DMZ Server</p>
+              <p>IP Address: 10.0.2.11</p>
+              <p>Managed by Ansible Controller.</p>
+          </body>
+          </html>
