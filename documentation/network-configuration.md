@@ -1,5 +1,5 @@
 # Network Configuration
-
+![Network Topology](topoloy.png)
 ## 1. Overview
 
 This homelab implements a segmented network architecture using three Debian 13 virtual machines running on VMware Workstation.
