@@ -1,1 +1,19 @@
 
+$TTL 86400
+
+@ IN SOA ns1.nusantara.id. admin.nusantara.id. (
+    2026102901 ; Serial
+    3600       ; Refresh
+    1800       ; Retry
+    604800     ; Expire
+    86400      ; Negative Cache TTL
+)
+
+; Name Server
+@   IN NS ns1.nusantara.id.
+
+; DNS Server
+ns1 IN A 10.0.1.11
+
+; Web Server
+web IN A 10.0.2.11
