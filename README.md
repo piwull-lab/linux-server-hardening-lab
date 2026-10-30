@@ -1,5 +1,3 @@
-
-
 # Linux Server Hardening & Infrastructure Automation Lab
 
 ## Overview
@@ -8,7 +6,7 @@ A personal homelab project designed to simulate a small enterprise network infra
 
 This project focuses on Linux server administration, network segmentation, firewall configuration, DNS management, SSH hardening, and infrastructure automation using Ansible.
 
-The lab was built using VMware Workstation with three Debian 13 virtual machines acting as a router, internal server, and DMZ server.
+The lab was built using VMware Workstation with three Debian 13 virtual machines acting as a Router Server, Internal Server (INT), and DMZ Server.
 
 ## Network Topology
 
@@ -22,55 +20,66 @@ The infrastructure consists of three virtual machines:
 
 | Server | Role | IP Address |
 |---|---|---|
-| Router Server | Routing, NAT, Firewall | WAN, INT, DMZ interfaces |
+| Router Server | Routing, NAT, and Firewall | WAN, INT, DMZ interfaces |
 | INT Server | BIND9 DNS, Ansible Controller | 10.0.1.11 |
 | DMZ Server | Nginx Web Server | 10.0.2.11 |
 
 ### Network Segmentation
+
+The network is divided into two internal segments:
 
 | Network | Subnet | Gateway |
 |---|---|---|
 | INT | 10.0.1.0/24 | 10.0.1.254 |
 | DMZ | 10.0.2.0/24 | 10.0.2.254 |
 
+This separation allows internal services and externally exposed services to operate in different network segments.
+
 ## Technologies
 
-- Debian 13
-- VMware Workstation
-- nftables
-- BIND9
-- OpenSSH
-- Ansible
-- Nginx
+- **Operating System:** Debian 13
+- **Virtualization:** VMware Workstation
+- **Firewall:** nftables
+- **DNS Server:** BIND9
+- **Remote Access:** OpenSSH
+- **Automation:** Ansible
+- **Web Server:** Nginx
 
 ## Implemented Features
 
-### Network Infrastructure
+### 1. Network Infrastructure
+
 - Network segmentation using INT and DMZ networks.
 - IPv4 forwarding and NAT configuration.
 - Inter-network routing.
-- Firewall filtering using nftables.
+- Traffic filtering using nftables.
+- Stateful firewall rules for established and related connections.
 
-### DNS Management
+### 2. DNS Management
+
 - Internal DNS server using BIND9.
 - Custom internal DNS zone: `nusantara.id`.
 - Internal hostname resolution for `web.nusantara.id`.
+- DNS forwarding for external name resolution.
 
-### Server Security
+### 3. Server Security
+
 - SSH key-based authentication using Ed25519.
 - Disabled direct root SSH login.
 - Disabled password-based SSH authentication.
-- SSH hardening on INT and DMZ servers.
+- Disabled keyboard-interactive SSH authentication.
+- SSH hardening applied to INT and DMZ servers.
 
-### Infrastructure Automation
-- Ansible Controller hosted on INT Server.
+### 4. Infrastructure Automation
+
+- Ansible Controller hosted on the INT Server.
 - Remote server management through SSH.
 - Automated Nginx installation.
-- Automated website deployment.
+- Automated website deployment using Ansible Playbooks.
 
 ## Testing & Validation
 
-The implemented infrastructure was validated through practical testing.
+The infrastructure was validated through connectivity tests, DNS queries, HTTP requests, SSH authentication tests, and Ansible automation.
 
 | Test | Result |
 |---|---|
@@ -80,22 +89,23 @@ The implemented infrastructure was validated through practical testing.
 | DNS resolution from DMZ | Passed |
 | HTTP access using IP address | Passed |
 | HTTP access using internal DNS | Passed |
-| SSH key authentication from Windows | Passed |
+| SSH key authentication from Windows to INT | Passed |
+| SSH key authentication from Windows to DMZ | Passed |
 | SSH password rejection on INT | Passed |
 | Ansible connectivity | Passed |
 | Nginx service status | Active |
 | Nginx boot enablement | Enabled |
 
-### Web Server
+### Web Server Access
 
 The deployed website can be accessed internally through:
 
 - `http://10.0.2.11`
 - `http://web.nusantara.id`
 
-### Testing Evidence
+### Testing Documentation
 
-Detailed testing results and terminal screenshots are available in:
+Detailed test procedures and observed results are documented in:
 
 [`documentation/testing-and-validation.md`](documentation/testing-and-validation.md)
 
@@ -104,39 +114,54 @@ Detailed testing results and terminal screenshots are available in:
 ```text
 linux-server-hardening-lab/
 ├── ansible/
+│   ├── deploy-website.yml
+│   ├── install-nginx.yml
+│   └── inventory.ini
 ├── dns/
+│   ├── db.nusantara.id
+│   └── named.conf.local
 ├── documentation/
+│   ├── ansible-automation.md
 │   ├── network-configuration.md
 │   ├── security-configuration.md
 │   ├── testing-and-validation.md
-│   └── topology.png
+│   └── topoloy.png
 ├── firewall/
-├── screenshots/
-├── ssh-hardening/
+│   └── nftables.conf
+├── ssh-hardening.conf/
+│   └── 99-hardening.conf
 └── README.md
 ```
+
+## Current Limitations
+
+- Router input and output firewall policies still use the `ACCEPT` default policy. Further hardening of traffic directed to and originating from the router is planned.
+- Additional security testing and monitoring have not yet been implemented.
+- Terminal screenshots and visual testing evidence will be added as project documentation is expanded.
+
+## Future Improvements
+
+- Implement stricter firewall policies for the router.
+- Server monitoring and observability.
+- Additional security testing.
+- Backup and recovery automation.
+- Further improvements to infrastructure automation.
+- More comprehensive technical documentation.
 
 ## Project Status
 
 **Status: Core Implementation Completed**
 
-Core infrastructure, network segmentation, DNS integration, SSH hardening, firewall configuration, and Ansible-based web deployment have been implemented and tested.
+The core infrastructure has been implemented and tested, including network segmentation, routing, NAT, DNS integration, SSH hardening, firewall configuration, and Ansible-based web server deployment.
 
-### Future Improvements
-
-- Server monitoring and observability.
-- Additional security testing.
-- Backup and recovery automation.
-- Infrastructure automation improvements.
-- More comprehensive technical documentation.
+Further improvements are planned to strengthen security, monitoring, and automation.
 
 ## Author
 
-Personal Linux Infrastructure & Server Administration Project.
+Telecommunication Engineering Student
 
-Built as a hands-on learning project to improve practical skills in Linux system administration, networking, infrastructure security, and automation.
-- Infrastructure documentation.
+Diploma III (D3) Telecommunication Engineering student at Politeknik Elektronika Negeri Surabaya (PENS).
 
-## Author
+Interested in Linux System Administration, Network Infrastructure, Cybersecurity, and Cloud Computing.
 
-Personal Linux Infrastructure & Server Administration Project.
+This project was developed as part of my hands-on learning journey to explore Linux server administration, network engineering, infrastructure security, and automation.
