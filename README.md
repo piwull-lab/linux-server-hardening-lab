@@ -1,12 +1,4 @@
-# Linux Server Hardening & Infrastructure Automation Lab
 
-## Overview
-## Network Topology
-
-The following diagram illustrates the network architecture
-of this homelab project.
-
-![Network Topology](documentation/topoloy.png)
 
 # Linux Server Hardening & Infrastructure Automation Lab
 
@@ -22,7 +14,7 @@ The lab was built using VMware Workstation with three Debian 13 virtual machines
 
 The following diagram illustrates the network architecture of this homelab project.
 
-![Network Topology](documentation/topology.png)
+![Network Topology](documentation/topoloy.png)
 
 ## Network Architecture
 
