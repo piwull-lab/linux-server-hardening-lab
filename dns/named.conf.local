@@ -1,1 +1,7 @@
 
+// Internal DNS Zone Configuration
+
+zone "nusantara.id" {
+    type master;
+    file "/etc/bind/db.nusantara.id";
+};
