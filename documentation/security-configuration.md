@@ -90,3 +90,34 @@ Additional improvements may include:
 The lab implements basic Linux server hardening and network traffic control through nftables and OpenSSH security configurations.
 
 These measures provide a foundation for further infrastructure security improvements.
+
+## 9. SSH Hardening
+## SSH Hardening Implementation
+
+SSH hardening was implemented on both INT Server and DMZ Server.
+
+The configuration is stored in:
+
+`/etc/ssh/sshd_config.d/99-hardening.conf`
+
+### Security Measures
+
+- Disabled direct root SSH login.
+- Enabled public key authentication.
+- Disabled password-based SSH authentication.
+- Disabled keyboard-interactive authentication.
+- Rejected empty passwords.
+
+### Authentication Testing
+
+SSH access was tested using Ed25519 public key authentication.
+
+The following administrative access was verified:
+
+- Windows host to INT Server.
+- Windows host to DMZ Server.
+- INT Server to DMZ Server using Ansible SSH key authentication.
+
+### Result
+
+Both INT Server and DMZ Server successfully accepted SSH key-based authentication after the hardening configuration was applied.
