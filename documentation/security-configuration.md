@@ -1,4 +1,4 @@
-
+![Network Topology](topology.png)
 # Security Configuration
 
 ## 1. Overview
