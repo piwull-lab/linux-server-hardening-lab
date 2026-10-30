@@ -1,62 +1,61 @@
+# Linux Server Hardening & Infrastructure Automation Lab
 
-# Linux Server Hardening Lab
+## Overview
 
-A hands-on learning project focused on Linux system administration, server security, and infrastructure hardening.
+A personal homelab project designed to simulate a small enterprise network infrastructure using Debian 13 virtual machines.
 
-## About This Project
+This project focuses on Linux server administration, network segmentation, firewall configuration, DNS management, SSH hardening, and infrastructure automation using Ansible.
 
-This repository documents my learning journey in securing Linux systems and understanding fundamental server security practices. It is part of my effort to strengthen my skills in Linux, networking, cybersecurity, and cloud infrastructure.
+## Network Architecture
 
-The project will include practical experiments, configuration notes, testing results, and lessons learned.
+The infrastructure consists of three virtual machines:
 
-## Objectives
+| Server | Role | IP Address |
+|---|---|---|
+| Router Server | Routing, NAT, Firewall | Multiple Interfaces |
+| INT Server | BIND9 DNS, Ansible Controller | 10.0.1.11 |
+| DMZ Server | Nginx Web Server | 10.0.2.11 |
 
-- Understand Linux system administration and user permissions.
-- Learn how to secure SSH remote access.
-- Configure and test basic firewall rules.
-- Apply system updates and security best practices.
-- Document security testing and troubleshooting processes.
-- Build a foundation for cybersecurity and cloud infrastructure.
+## Technologies
 
-## Planned Topics
+- Debian 13
+- VMware Workstation
+- nftables
+- BIND9
+- OpenSSH
+- Ansible
+- Nginx
 
-| Topic | Status |
-|---|---|
-| Linux system administration | Planned |
-| User and permission management | Planned |
-| SSH security | Planned |
-| Firewall configuration | Planned |
-| System security updates | Planned |
-| Security testing and documentation | Planned |
+## Implemented Features
 
-*Statuses will be updated as each practical exercise is completed.*
+- Network segmentation using INT and DMZ networks.
+- IPv4 forwarding and NAT configuration.
+- Firewall configuration using nftables.
+- Internal DNS management using BIND9.
+- SSH key-based authentication.
+- SSH security hardening.
+- Automated Nginx installation using Ansible.
+- Automated website deployment using Ansible.
 
-## Lab Environment
+## Testing & Validation
 
-- Operating system: To be documented
-- Tools: To be documented
-- Testing environment: Personal lab or virtual machine
+- Network connectivity between virtual machines.
+- DNS resolution for `web.nusantara.id`.
+- SSH key-based authentication.
+- Ansible connectivity testing.
+- Automated Nginx deployment.
+- Website accessibility through an internal DNS hostname.
 
-## Learning Method
+## Project Status
 
-Each practical exercise will include:
+Core infrastructure, DNS integration, SSH hardening, and Ansible-based web deployment have been implemented and tested.
 
-1. Objective and background.
-2. Configuration steps.
-3. Testing procedures.
-4. Results and observations.
-5. Troubleshooting notes and lessons learned.
-
-## Scope and Ethics
-
-All experiments will be conducted on systems I own or have explicit permission to test. This project is intended for educational purposes and responsible security learning.
-
-## Progress
-
-**Current status:** Initial documentation and project setup.
-
-This repository is a work in progress. Practical results and supporting evidence will be added as I complete each exercise.
+Future improvements:
+- Server monitoring.
+- Security testing.
+- Backup and recovery.
+- Infrastructure documentation.
 
 ## Author
 
-Telecommunication Engineering student interested in Linux, networking, cybersecurity, and cloud infrastructure.
+Personal Linux Infrastructure & Server Administration Project.
