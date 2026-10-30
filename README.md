@@ -1,6 +1,12 @@
 # Linux Server Hardening & Infrastructure Automation Lab
 
 ## Overview
+## Network Topology
+
+The following diagram illustrates the network architecture
+of this homelab project.
+
+![Network Topology](documentation/topoloy.png)
 
 A personal homelab project designed to simulate a small enterprise network infrastructure using Debian 13 virtual machines.
 
